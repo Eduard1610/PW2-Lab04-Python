@@ -37,7 +37,18 @@ class Picture:
 
   def negative(self):
     """ Devuelve un negativo de la imagen """
-    return Picture(None)
+    imgNeg = []
+    listaPieza = self.img # La pieza se muestra como un conjunto de strings
+    indice = 0
+    while indice < len(listaPieza): # El índice representa cada línea de nuestra lista 
+      lineaNegativa = ''
+      # Se usa un for para rellenar lineaNegativa caracter por caracter
+      for caracter in range(0,len(listaPieza[indice])): # Len(arregloPieza[indice]) representa la longitud de una linea
+        caracterNegativo = self._invColor(listaPieza[indice][caracter]) # Se llama a la función invColor para cada caracter de una determinada linea
+        lineaNegativa += caracterNegativo # Esta es la linea negativa de un índice determinado 
+      imgNeg.append(lineaNegativa) # Agregamos línea a línea para nuestra lista de negativos
+      indice += 1
+    return Picture(imgNeg)
 
   def join(self, p):
     """ Devuelve una nueva figura poniendo la figura del argumento 
