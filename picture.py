@@ -13,11 +13,15 @@ class Picture:
 
   def verticalMirror(self):
     """ Devuelve el espejo vertical de la imagen """
-    return Picture(None)
+    imgInv = [] # Será la figura devuleta 
+    contador = len(self.img) - 1
+    while contador >= 0:
+      imgInv.append(self.img[contador])
+      contador -= 1
+    return Picture(imgInv)
 
   def horizontalMirror(self):
     """ Devuelve el espejo horizontal de la imagen """
-    return Picture(None)
 
   def negative(self):
     """ Devuelve un negativo de la imagen """
