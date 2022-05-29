@@ -89,8 +89,17 @@ class Picture:
     indice2 = 0
     """Indice 1 para la pieza actual y Indice 2 para la pieza a agregar"""
     conjuntoDePiezas = []
+    """Para esto debemos empezar creando la lista con la 2da pieza"""
+    while indice2 < len(piezaArriba):
+      linea2 = piezaArriba[indice2]
+      conjuntoDePiezas.append(linea2)
+      indice2 += 1 
+    while indice1 < len(piezaActual):
+      linea = piezaActual[indice1]
+      conjuntoDePiezas.append(linea)
+      indice1 += 1 
+
     return Picture(conjuntoDePiezas)
-  
   def horizontalRepeat(self, n):
     """ Devuelve una nueva figura repitiendo la figura actual al costado
         la cantidad de veces que indique el valor de n """
