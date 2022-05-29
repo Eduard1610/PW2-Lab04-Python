@@ -107,7 +107,14 @@ class Picture:
     indice1 = 0
     """ Indice para la pieza actual"""
     conjuntoDePiezas = []
-    return Picture(conjuntoDePiezas)
+    for indice1 in range(0,len(piezaActual)):
+      linea = ''
+      count = 0
+      while count < n:
+        linea += piezaActual[indice1]
+        count += 1
+      conjuntoDePiezas.append(linea)
+    return Picture(conjuntoDePiezas)    
 
   def verticalRepeat(self, n):
     """ Devuelve una nueva figura repitiendo la figura actual por encima la
@@ -117,6 +124,7 @@ class Picture:
     contador = 0
     """ Indice para la figura actual"""
     conjuntoDePiezas = []
+
     return Picture(conjuntoDePiezas)
 
   #Extra: Sólo para realmente viciosos 
