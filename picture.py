@@ -53,7 +53,15 @@ class Picture:
   def join(self, p):
     """ Devuelve una nueva figura poniendo la figura del argumento 
         al lado derecho de la figura actual """
-    return Picture(None)
+    piezaActual = self.img
+    piezaSubyacente = p.img
+    indice = 0
+    piezasUnidas = []
+    while indice < len(piezaActual):
+      linea = piezaActual[indice]+piezaSubyacente[indice] # Creamos una línea de un determinado índice que sea la fusión de piezas
+      piezasUnidas.append(linea)
+      indice += 1 
+    return Picture(piezasUnidas)
 
   def up(self, p):
     return Picture(None)
