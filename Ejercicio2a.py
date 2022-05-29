@@ -9,4 +9,5 @@ from chessPictures import *
 #draw(knight.join(rock))
 #draw(knight.up(rock))
 #draw(knight.under(king))
-draw(knight.horizontalRepeat(3))
+#draw(knight.horizontalRepeat(3))
+draw(knight.verticalRepeat(3))

@@ -124,10 +124,13 @@ class Picture:
     contador = 0
     """ Indice para la figura actual"""
     conjuntoDePiezas = []
-
+    while contador < n:
+      for indice1 in range(0,len(piezaActual)):
+        linea = piezaActual[indice1]
+        conjuntoDePiezas.append(linea)
+      contador += 1
     return Picture(conjuntoDePiezas)
-
-  #Extra: Sólo para realmente viciosos 
+#Extra: Sólo para realmente viciosos 
   def rotate(self):
     """Devuelve una figura rotada en 90 grados, puede ser en sentido horario
     o antihorario"""
