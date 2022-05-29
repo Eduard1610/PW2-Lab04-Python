@@ -22,6 +22,18 @@ class Picture:
 
   def horizontalMirror(self):
     """ Devuelve el espejo horizontal de la imagen """
+    imgInv = []
+    listaActual_Pieza = self.img
+    contador = 0
+    while contador < len(listaActual_Pieza):
+      lineaInvertida = ''
+      indice = len(listaActual_Pieza[contador]) - 1
+      while indice >= 0:
+        lineaInvertida += listaActual_Pieza[contador][indice] # Caracter
+        indice -= 1
+      imgInv.append(lineaInvertida)
+      contador += 1
+    return Picture(imgInv)
 
   def negative(self):
     """ Devuelve un negativo de la imagen """
