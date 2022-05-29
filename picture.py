@@ -71,9 +71,15 @@ class Picture:
     indice2 = 0
     """Indice 1 para la pieza actual y Indice 2 para la pieza a agregar"""
     conjuntoDePiezas = []
-
+    while indice1 < len(piezaActual):
+      linea = piezaActual[indice1]
+      conjuntoDePiezas.append(linea)
+      indice1 += 1 
+    while indice2 < len(piezaAbajo):
+      linea2 = piezaAbajo[indice2]
+      conjuntoDePiezas.append(linea2)
+      indice2 += 1 
     return Picture(conjuntoDePiezas)
-
   def under(self, p):
     """ Devuelve una nueva figura poniendo la figura p sobre la
         figura actual """
