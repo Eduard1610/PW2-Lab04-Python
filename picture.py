@@ -64,22 +64,75 @@ class Picture:
     return Picture(piezasUnidas)
 
   def up(self, p):
-    return Picture(None)
-
+    """Devuelve una nueva figura poniendo la figura p debajo de la figura actual """
+    piezaActual = self.img
+    piezaAbajo = p.img
+    indice1 = 0
+    indice2 = 0
+    """Indice 1 para la pieza actual y Indice 2 para la pieza a agregar"""
+    conjuntoDePiezas = []
+    while indice1 < len(piezaActual):
+      linea = piezaActual[indice1]
+      conjuntoDePiezas.append(linea)
+      indice1 += 1 
+    while indice2 < len(piezaAbajo):
+      linea2 = piezaAbajo[indice2]
+      conjuntoDePiezas.append(linea2)
+      indice2 += 1 
+    return Picture(conjuntoDePiezas)
+  
   def under(self, p):
     """ Devuelve una nueva figura poniendo la figura p sobre la
         figura actual """
-    return Picture(None)
+    piezaActual = self.img
+    piezaArriba = p.img
+    indice1 = 0
+    indice2 = 0
+    """Indice 1 para la pieza actual y Indice 2 para la pieza a agregar"""
+    conjuntoDePiezas = []
+    """Para esto debemos empezar creando la lista con la 2da pieza"""
+    while indice2 < len(piezaArriba):
+      linea2 = piezaArriba[indice2]
+      conjuntoDePiezas.append(linea2)
+      indice2 += 1 
+    while indice1 < len(piezaActual):
+      linea = piezaActual[indice1]
+      conjuntoDePiezas.append(linea)
+      indice1 += 1 
+    return Picture(conjuntoDePiezas)
   
   def horizontalRepeat(self, n):
     """ Devuelve una nueva figura repitiendo la figura actual al costado
         la cantidad de veces que indique el valor de n """
-    return Picture(None)
+    piezaActual = self.img
+    indice1 = 0
+    """ Indice para la pieza actual"""
+    conjuntoDePiezas = []
+    for indice1 in range(0,len(piezaActual)):
+      linea = ''
+      count = 0
+      while count < n:
+        linea += piezaActual[indice1]
+        count += 1
+      conjuntoDePiezas.append(linea)
+    return Picture(conjuntoDePiezas)    
 
   def verticalRepeat(self, n):
-    return Picture(None)
-
-  #Extra: Sólo para realmente viciosos 
+    """ Devuelve una nueva figura repitiendo la figura actual por encima la
+        cantidad de veces que el valor de n indique"""
+    piezaActual = self.img
+    indice1 = 0
+    contador = 0
+    """ Indice para la figura actual"""
+    conjuntoDePiezas = []
+    while contador < n:
+      for indice1 in range(0,len(piezaActual)):
+        linea = piezaActual[indice1]
+        conjuntoDePiezas.append(linea)
+      contador += 1
+    return Picture(conjuntoDePiezas)
+  
+#Extra: Sólo para realmente viciosos 
   def rotate(self):
     """Devuelve una figura rotada en 90 grados, puede ser en sentido horario
     o antihorario"""
