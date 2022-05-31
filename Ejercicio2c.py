@@ -3,3 +3,4 @@ from chessPictures import *
 
 #Reina repetida n veces horizontalmente
 draw(queen.horizontalRepeat(4))
+

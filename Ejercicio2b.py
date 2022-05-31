@@ -7,3 +7,4 @@ caballosHorizontal1 = knight.join(caballoN)
 caballosHorizontal2Invertido = caballosHorizontal1.horizontalMirror()
 figura = caballosHorizontal1.up(caballosHorizontal2Invertido)
 draw(figura)
+

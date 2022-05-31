@@ -1,7 +1,7 @@
 from colors import *
 class Picture:
   def __init__(self, img):
-    self.img = img
+    self.img = img;
 
   def __eq__(self, other):
     return self.img == other.img
@@ -13,7 +13,7 @@ class Picture:
 
   def verticalMirror(self):
     """ Devuelve el espejo vertical de la imagen """
-    imgInv = []
+    imgInv = [] # Será la figura devuleta 
     contador = len(self.img) - 1
     while contador >= 0:
       imgInv.append(self.img[contador])
@@ -64,69 +64,76 @@ class Picture:
     return Picture(piezasUnidas)
 
   def up(self, p):
+    """Devuelve una nueva figura poniendo la figura p debajo de la figura actual """
     piezaActual = self.img
     piezaAbajo = p.img
-    indice = 0 # Para la primera pieza
-    indice2 = 0 # Para la segunda pieza
-    piezasUnidas = []
-    while indice < len(piezaActual):
-      linea = piezaActual[indice]
-      piezasUnidas.append(linea)
-      indice += 1 
+    indice1 = 0
+    indice2 = 0
+    """Indice 1 para la pieza actual y Indice 2 para la pieza a agregar"""
+    conjuntoDePiezas = []
+    while indice1 < len(piezaActual):
+      linea = piezaActual[indice1]
+      conjuntoDePiezas.append(linea)
+      indice1 += 1 
     while indice2 < len(piezaAbajo):
       linea2 = piezaAbajo[indice2]
-      piezasUnidas.append(linea2)
+      conjuntoDePiezas.append(linea2)
       indice2 += 1 
-    return Picture(piezasUnidas)
-
+    return Picture(conjuntoDePiezas)
+  
   def under(self, p):
     """ Devuelve una nueva figura poniendo la figura p sobre la
         figura actual """
     piezaActual = self.img
     piezaArriba = p.img
-    indice = 0 # Para la primera pieza
-    indice2 = 0 # Para la segunda pieza
-    piezasUnidas = []
-    # Empezamos creando la lista con la segunda pieza
+    indice1 = 0
+    indice2 = 0
+    """Indice 1 para la pieza actual y Indice 2 para la pieza a agregar"""
+    conjuntoDePiezas = []
+    """Para esto debemos empezar creando la lista con la 2da pieza"""
     while indice2 < len(piezaArriba):
       linea2 = piezaArriba[indice2]
-      piezasUnidas.append(linea2)
+      conjuntoDePiezas.append(linea2)
       indice2 += 1 
-    while indice < len(piezaActual):
-      linea = piezaActual[indice]
-      piezasUnidas.append(linea)
-      indice += 1 
-
-    return Picture(piezasUnidas)
+    while indice1 < len(piezaActual):
+      linea = piezaActual[indice1]
+      conjuntoDePiezas.append(linea)
+      indice1 += 1 
+    return Picture(conjuntoDePiezas)
   
   def horizontalRepeat(self, n):
     """ Devuelve una nueva figura repitiendo la figura actual al costado
         la cantidad de veces que indique el valor de n """
     piezaActual = self.img
-    indice = 0
-    piezasUnidas = []
-    for indice in range(0,len(piezaActual)):
+    indice1 = 0
+    """ Indice para la pieza actual"""
+    conjuntoDePiezas = []
+    for indice1 in range(0,len(piezaActual)):
       linea = ''
       count = 0
       while count < n:
-        linea += piezaActual[indice]
+        linea += piezaActual[indice1]
         count += 1
-      piezasUnidas.append(linea)
-    return Picture(piezasUnidas)
+      conjuntoDePiezas.append(linea)
+    return Picture(conjuntoDePiezas)    
 
   def verticalRepeat(self, n):
+    """ Devuelve una nueva figura repitiendo la figura actual por encima la
+        cantidad de veces que el valor de n indique"""
     piezaActual = self.img
-    indice = 0
-    count = 0
-    piezasUnidas = []
-    while count < n:
-      for indice in range(0,len(piezaActual)):
-        linea = piezaActual[indice]
-        piezasUnidas.append(linea)
-      count += 1
-    return Picture(piezasUnidas)
+    indice1 = 0
+    contador = 0
+    """ Indice para la figura actual"""
+    conjuntoDePiezas = []
+    while contador < n:
+      for indice1 in range(0,len(piezaActual)):
+        linea = piezaActual[indice1]
+        conjuntoDePiezas.append(linea)
+      contador += 1
+    return Picture(conjuntoDePiezas)
+  
+#Extra: Sólo para realmente viciosos 
 
-  #Extra: Sólo para realmente viciosos 
   def rotate(self):
     """Devuelve una figura rotada en 90 grados, puede ser en sentido horario
     o antihorario"""
