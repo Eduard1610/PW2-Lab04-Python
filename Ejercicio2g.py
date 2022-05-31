@@ -77,4 +77,3 @@ figurasNegras = dibujoA.up(dibujoB).negative();
 #Se crea el tablero
 tablero = figurasBlancas.under(espaciosVacios).under(figurasNegras)
 draw(tablero)
-

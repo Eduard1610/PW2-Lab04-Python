@@ -31,61 +31,55 @@ class Picture:
 
   def verticalMirror(self):
     """ Devuelve el espejo vertical de la imagen """
-    #Arreglo donde almacenare la figura invertida
-    imgInv = [];
-    #Longitud del tamaño del arreglo de la figura
-    longitud = len(self.img)-1; 
-    #Invierto el arreglo
-    while longitud >= 0:
-      imgInv.append(self.img[longitud])
-      #print(self.img[longitud])
-      longitud -= 1;
-
-    #Se retorna el arreglo ya convertido
-    return Picture(imgInv); 
-
+    imgInv = [] # Será la figura devuleta 
+    contador = len(self.img) - 1
+    while contador >= 0:
+      imgInv.append(self.img[contador])
+      contador -= 1
+    return Picture(imgInv)
 
   def horizontalMirror(self):
     """ Devuelve el espejo horizontal de la imagen """
-    imgInv = [];
-    
-    imagenActual = self.img;
-    for x in imagenActual:
-      longitud = len(x)-1; #Longitud del elemento actual
-      temporal = [];
-      while longitud >= 0:
-        temporal.append(x[longitud])
-        longitud -= 1
-      temporal = "".join(temporal);#Convierte el array a string
-      imgInv.append(temporal);#Se agrega al nuevo arreglo que se retornará
-    return Picture(imgInv);
-
+    imgInv = []
+    listaActual_Pieza = self.img
+    contador = 0
+    while contador < len(listaActual_Pieza):
+      lineaInvertida = ''
+      indice = len(listaActual_Pieza[contador]) - 1
+      while indice >= 0:
+        lineaInvertida += listaActual_Pieza[contador][indice] # Caracter
+        indice -= 1
+      imgInv.append(lineaInvertida)
+      contador += 1
+    return Picture(imgInv)
 
   def negative(self):
     """ Devuelve un negativo de la imagen """
-    imgN = [];
-    imagenActual = self.img;
-    for x in imagenActual: #Itera cada elemtno del array
-      temporal = "";
-      for y in x:
-        temporal += self._invColor(y);
-      imgN.append(temporal)
-    return Picture(imgN);
+    imgNeg = []
+    listaPieza = self.img # La pieza se muestra como un conjunto de strings
+    indice = 0
+    while indice < len(listaPieza): # El índice representa cada línea de nuestra lista 
+      lineaNegativa = ''
+      # Se usa un for para rellenar lineaNegativa caracter por caracter
+      for caracter in range(0,len(listaPieza[indice])): # Len(arregloPieza[indice]) representa la longitud de una linea
+        caracterNegativo = self._invColor(listaPieza[indice][caracter]) # Se llama a la función invColor para cada caracter de una determinada linea
+        lineaNegativa += caracterNegativo # Esta es la linea negativa de un índice determinado 
+      imgNeg.append(lineaNegativa) # Agregamos línea a línea para nuestra lista de negativos
+      indice += 1
+    return Picture(imgNeg)
 
   def join(self, p):
     """ Devuelve una nueva figura poniendo la figura del argumento 
         al lado derecho de la figura actual """
-    figurasUnidas = [];
-    imagenActual = self.img;
-    longitud = len(self.img)-1;
-    temporal = "";
-    i = 0; #Iterador
-    
-    while i <= longitud:#Cada figura tiene 58 elementos 
-      temporal = imagenActual[i] +p.img[i] #Se unen los dos arays
-      figurasUnidas.append(temporal);
-      i += 1;
-    return Picture(figurasUnidas);
+    piezaActual = self.img
+    piezaSubyacente = p.img
+    indice = 0
+    piezasUnidas = []
+    while indice < len(piezaActual):
+      linea = piezaActual[indice]+piezaSubyacente[indice] # Creamos una línea de un determinado índice que sea la fusión de piezas
+      piezasUnidas.append(linea)
+      indice += 1 
+    return Picture(piezasUnidas)
 
   def up(self, p):
     """Devuelve una nueva figura poniendo la figura p debajo de la figura actual """
@@ -95,7 +89,6 @@ class Picture:
     indice2 = 0
     """Indice 1 para la pieza actual y Indice 2 para la pieza a agregar"""
     conjuntoDePiezas = []
-
     while indice1 < len(piezaActual):
       linea = piezaActual[indice1]
       conjuntoDePiezas.append(linea)
@@ -124,29 +117,41 @@ class Picture:
       linea = piezaActual[indice1]
       conjuntoDePiezas.append(linea)
       indice1 += 1 
-
     return Picture(conjuntoDePiezas)
-
+  
   def horizontalRepeat(self, n):
     """ Devuelve una nueva figura repitiendo la figura actual al costado
         la cantidad de veces que indique el valor de n """
-    resultado = Picture(self.img);
-    i = 1; #Empieza desde 1 porque ya se le asigna una imagen en la linea de arriba
-    while i < n:
-      resultado = resultado.join(self)# Picture
-      i+= 1;
-    return resultado
+    piezaActual = self.img
+    indice1 = 0
+    """ Indice para la pieza actual"""
+    conjuntoDePiezas = []
+    for indice1 in range(0,len(piezaActual)):
+      linea = ''
+      count = 0
+      while count < n:
+        linea += piezaActual[indice1]
+        count += 1
+      conjuntoDePiezas.append(linea)
+    return Picture(conjuntoDePiezas)    
 
   def verticalRepeat(self, n):
-    resultado = Picture(self.img);
-    i = 1; #Empieza desde 1 porque ya se le asigna una imagen en la linea de arriba
-    while i < n:
-      resultado = resultado.up(self)# Picture
-      i+= 1;
-    return resultado
+    """ Devuelve una nueva figura repitiendo la figura actual por encima la
+        cantidad de veces que el valor de n indique"""
+    piezaActual = self.img
+    indice1 = 0
+    contador = 0
+    """ Indice para la figura actual"""
+    conjuntoDePiezas = []
+    while contador < n:
+      for indice1 in range(0,len(piezaActual)):
+        linea = piezaActual[indice1]
+        conjuntoDePiezas.append(linea)
+      contador += 1
+    return Picture(conjuntoDePiezas)
+  
+#Extra: Sólo para realmente viciosos 
 
-
-  #Extra: Sólo para realmente viciosos 
   def rotate(self):
     """Devuelve una figura rotada en 90 grados, puede ser en sentido horario
     o antihorario"""

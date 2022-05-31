@@ -13,6 +13,7 @@ color = {
     '#': DARKGRAY,
     ' ': BLUE,
 }
+
 inverter = {
     '_': '=',
     '=': '_',
