@@ -80,6 +80,7 @@ class Picture:
       conjuntoDePiezas.append(linea2)
       indice2 += 1 
     return Picture(conjuntoDePiezas)
+  
   def under(self, p):
     """ Devuelve una nueva figura poniendo la figura p sobre la
         figura actual """
@@ -98,8 +99,8 @@ class Picture:
       linea = piezaActual[indice1]
       conjuntoDePiezas.append(linea)
       indice1 += 1 
-
     return Picture(conjuntoDePiezas)
+  
   def horizontalRepeat(self, n):
     """ Devuelve una nueva figura repitiendo la figura actual al costado
         la cantidad de veces que indique el valor de n """
@@ -130,6 +131,7 @@ class Picture:
         conjuntoDePiezas.append(linea)
       contador += 1
     return Picture(conjuntoDePiezas)
+  
 #Extra: Sólo para realmente viciosos 
   def rotate(self):
     """Devuelve una figura rotada en 90 grados, puede ser en sentido horario
