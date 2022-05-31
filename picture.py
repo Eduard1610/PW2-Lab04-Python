@@ -4,7 +4,25 @@ class Picture:
     self.img = img;
 
   def __eq__(self, other):
-    return self.img == other.img
+    piezaNueva = [];
+    casilla = self.img
+    piezaPintar = other.img
+    indice = 0
+    while indice < len(casilla):#Itero cada elemetno de la casilla
+      longitud = len(piezaPintar[indice])#Longitud del elemento i del array de figura
+      iterador = 0
+      temporal = '';
+      #Compara cada elemento del string y lo va pintando
+      while iterador < longitud: 
+        if( piezaPintar[indice][iterador]!= '_' and  piezaPintar[indice][iterador] != " "):
+          temporal += piezaPintar[indice][iterador]
+          #print(piezaPintar[indice][iterador])
+        else:
+          temporal += casilla[indice][iterador];
+        iterador += 1
+      piezaNueva.append(temporal)#Se agrega el string combinado con los caracteres de las dos figuras
+      indice += 1
+    return Picture(piezaNueva)
 
   def _invColor(self, color):
     if color not in inverter:
@@ -80,7 +98,7 @@ class Picture:
       conjuntoDePiezas.append(linea2)
       indice2 += 1 
     return Picture(conjuntoDePiezas)
-  
+
   def under(self, p):
     """ Devuelve una nueva figura poniendo la figura p sobre la
         figura actual """
@@ -138,4 +156,3 @@ class Picture:
     """Devuelve una figura rotada en 90 grados, puede ser en sentido horario
     o antihorario"""
     return Picture(None)
-

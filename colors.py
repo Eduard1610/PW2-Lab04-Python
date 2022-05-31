@@ -6,17 +6,17 @@ DARKGRAY = (50, 50, 50)
 BLUE = (0, 0, 255)
 
 color = {
-  '_': LIGHTGRAY,
-  '=': GRAY,
-  '.': WHITE,
-  '@': BLACK,
-  '#': DARKGRAY,
-  ' ': BLUE,
-}
-inverter = {
-  '_': '=',
-  '=': '_',
-  '.': '@',
-  '@': '.',
+    '_': LIGHTGRAY,
+    '=': GRAY,
+    '.': WHITE,
+    '@': BLACK,
+    '#': DARKGRAY,
+    ' ': BLUE,
 }
 
+inverter = {
+    '_': '=',
+    '=': '_',
+    '.': '@',
+    '@': '.',
+}
