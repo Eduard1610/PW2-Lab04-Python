@@ -61,4 +61,20 @@ while i < len(tableroB):
     i += 1
 
 
-draw(dibujoA.under(dibujoB))
+#Armo mi grupo de BLANCAS
+figurasBlancas = dibujoB.up(dibujoA); #Las dos filas de las blancas
+
+#Se generan los espacios vacios
+filasCasillo1 = square.negative().join(square) 
+filasCasillo1 = filasCasillo1.horizontalRepeat(4);
+filasCasilla2 = filasCasillo1.negative()
+filasCompletasB = filasCasillo1.under(filasCasilla2);
+espaciosVacios = filasCompletasB.under(filasCompletasB)
+
+#Se generan el gurpo de NEGRASA
+figurasNegras = dibujoA.up(dibujoB).negative();
+
+#Se crea el tablero
+tablero = figurasBlancas.under(espaciosVacios).under(figurasNegras)
+draw(tablero)
+
