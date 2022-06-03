@@ -278,9 +278,17 @@
             *    (g) ![(g)](imagenes/ejercicio_02_g.png)
 
             ```sh
+                Se desea obtener un tablero de ajedrez.
 
-            Se desea obtener un tablero de ajedrez.
-            Con el objeto square, el cual representa un cuadrado de un color, podemos ir 'pintando' sobre él la figura que nosotros deseemos, y en base a condiciones que le demos alternaremos el color de fondo del square. Si obtenemos una fila completa, lo demás es solo jugar con los valores y las propiedades creadas previamente, de esta manera al final uniremos el grupo de Blancas con el grupo de Negras, insertando entre estas dos los filas de cuadrados del ejercicio ef.
+                Con el objeto square, el cual representa un cuadrado de un
+                color, podemos ir 'pintando' sobre él la figura que
+                nosotros deseemos, y en base a condiciones que le demos
+                alternaremos el color de fondo del square. Si obtenemos
+                una fila completa, lo demás es solo jugar con los valores 
+                y las propiedades creadas previamente, de esta manera al
+                final uniremos el grupo de Blancas con el grupo de Negras,
+                insertando entre estas dos los filas de cuadrados del
+                ejercicio ef.
                 
             ```
 
